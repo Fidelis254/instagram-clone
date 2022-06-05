@@ -1,4 +1,5 @@
 import os
+import django_heroku
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -6,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.environ.get('DEBUG')
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://vanili-instagram.herokuapp.com/']
 
 
 INSTALLED_APPS = [
@@ -52,11 +53,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'instagram_clone.wsgi.application'
 
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd5gi851hi5vkmd',
+        'USER': 'aokyfaljorfacz',
+        'PASSWORD': '78d9dc34b2889b0e3e43c56932b739ab4c7c04a56efa87db552218e3def51b0d',
+        'HOST' : 'ec2-3-211-221-185.compute-1.amazonaws.com',
+        'PORT' : '5432',
+     }
 }
 
 MESSAGE_TAGS = {
